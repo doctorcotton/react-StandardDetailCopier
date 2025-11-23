@@ -1,21 +1,76 @@
-# Getting Started
-- Hit run
-- Edit [App.tsx](#src/App.tsx) and watch it live update!
+# 原料标准明细一键复制插件
 
-# Learn More
+一个飞书多维表格插件，通过双向关联字段快速复制关联记录。
 
-You can learn more in the [Base Extension Development Guide](https://lark-technologies.larksuite.com/docx/HvCbdSzXNowzMmxWgXsuB2Ngs7d) or [多维表格扩展脚本开发指南](https://feishu.feishu.cn/docx/U3wodO5eqome3uxFAC3cl0qanIe).
+## ✨ 核心功能
 
-## Install packages
+通过双向关联字段，将一个记录的所有关联记录复制到另一个记录，并自动更新关联关系。
 
-Install packages in Shell pane or search and add in Packages pane.
+### 典型场景
 
-## Publish
-Please npm run build first, submit it together with the dist directory, and then fill in the form:
-[Share form](https://feishu.feishu.cn/share/base/form/shrcnGFgOOsFGew3SDZHPhzkM0e)
+```
+原料标准管理表
+├── 记录A: 凝茶萃取液-HTC8913-002
+│   └── 原材料标准明细 (关联字段)
+│       ├── 状态
+│       ├── 总体
+│       └── ... (共11条)
+│
+└── 记录B: 凝茶萃取液-HTC8913-003
+    └── 原材料标准明细 (关联字段)
+        └── (空) → 复制后有11条记录
+```
 
+## 🚀 快速开始
 
+### 安装依赖
 
-## 发布
-请先npm run build，连同dist目录一起提交，然后再填写表单：
-[共享表单](https://feishu.feishu.cn/share/base/form/shrcnGFgOOsFGew3SDZHPhzkM0e)
+```bash
+cd react-StandardDetailCopier
+npm install
+```
+
+### 本地开发
+
+```bash
+npm run dev
+```
+
+### 在飞书中测试
+
+1. 打开飞书多维表格
+2. 添加自定义插件：`http://localhost:5173`
+3. 开始使用
+
+## 📦 核心特性
+
+- ✅ 自动识别双向关联字段
+- ✅ 自动统计关联记录数量
+- ✅ 自动更新关联关系
+- ✅ 支持单选和多选关联字段
+- ✅ 自动跳过不可复制字段
+- ✅ 支持深色模式
+
+## 🔧 技术栈
+
+- **前端框架**: React 18 + TypeScript
+- **SDK**: @lark-base-open/js-sdk
+- **构建工具**: Vite
+- **国际化**: i18next
+
+## 📝 文档
+
+- **使用说明.md** - 详细的使用教程
+- **开发指南.md** - 开发者文档
+- **最终版本说明.md** - 版本更新说明
+
+## 📄 许可证
+
+ISC
+
+---
+
+**当前版本**: v2.7.1  
+**更新日期**: 2025-11-23  
+**状态**: ✅ 开发完成
+

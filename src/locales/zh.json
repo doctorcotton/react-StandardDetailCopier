@@ -1,3 +1,48 @@
 {
-  "title":"这是中文标题"
+  "app": {
+    "title": "原料标准明细一键复制",
+    "description": "通过双向关联字段快速复制关联记录"
+  },
+  "step1": {
+    "title": "步骤1: 选择主表",
+    "selectTable": "选择主表（如：原料标准管理）",
+    "placeholder": "请选择主表"
+  },
+  "step2": {
+    "title": "步骤2: 选择源记录",
+    "selectRecord": "选择要复制关联记录的源记录",
+    "placeholder": "请选择源记录",
+    "emptyTitle": "请先选择主表",
+    "emptyDescription": "选择主表后才能选择记录"
+  },
+  "step3": {
+    "title": "步骤3: 选择关联字段",
+    "selectField": "选择要复制的双向关联字段",
+    "placeholder": "请选择关联字段",
+    "linkedCount": "检测到 {count} 条关联记录",
+    "emptyTitle": "请先选择源记录",
+    "emptyDescription": "选择源记录后才能选择关联字段"
+  },
+  "step4": {
+    "title": "步骤4: 选择目标记录",
+    "selectRecord": "选择要复制到的目标记录",
+    "placeholder": "请选择目标记录",
+    "tip": "将从 {source} 的 {field} 复制 {count} 条记录，新记录的关联将指向目标记录",
+    "emptyTitle": "请先选择关联字段",
+    "emptyDescription": "选择关联字段后才能选择目标记录"
+  },
+  "actions": {
+    "startCopy": "开始复制",
+    "copying": "复制中..."
+  },
+  "messages": {
+    "selectMainTable": "请选择主表",
+    "selectSourceRecord": "请选择源记录",
+    "selectLinkField": "请选择关联字段",
+    "selectTargetRecord": "请选择目标记录",
+    "noLinkedRecords": "源记录没有关联记录可复制",
+    "copySuccess": "成功复制 {count} 条关联记录！",
+    "copyFailed": "复制失败: {error}",
+    "loading": "加载中..."
+  }
 }

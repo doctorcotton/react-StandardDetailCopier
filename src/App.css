@@ -1,12 +1,324 @@
-@import 'reset-css';
+/* 全局样式 - Modern & Cool */
 
-.main {
-  padding: 1.5rem 1rem 1rem;
+:root {
+  /* Base 设计规范 - 基础色 */
+  --primary-color: #3370FF;
+  --primary-hover: #5185FF;
+  --primary-active: #295AC4;
+  
+  /* 酷炫渐变色 */
+  --gradient-primary: linear-gradient(135deg, #3370FF 0%, #00C6FB 100%);
+  --gradient-hover: linear-gradient(135deg, #5185FF 0%, #40D6FF 100%);
+  --gradient-bg: linear-gradient(180deg, #F6F8FA 0%, #FFFFFF 100%);
+  --gradient-card-active: linear-gradient(90deg, rgba(51, 112, 255, 0.03) 0%, rgba(51, 112, 255, 0) 100%);
+
+  /* 中性色 */
+  --color-n900: #1F2329;
+  --color-n600: #646A73;
+  --color-n500: #8F959E;
+  --color-n400: #C9CFD8;
+  --color-n300: #DEE0E3;
+  --color-n200: #F2F3F5;
+  --color-n100: #F5F6F7;
+  --color-white: #FFFFFF;
+
+  /* 变量映射 */
+  --bg-color: var(--color-white);
+  --bg-body: #F2F3F5;
+  
+  --text-primary: var(--color-n900);
+  --text-secondary: var(--color-n600);
+  
+  --border-color: var(--color-n300);
+  
+  /* 阴影系统 - 更有质感 */
+  --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.05);
+  --shadow-card-hover: 0 8px 30px rgba(51, 112, 255, 0.12);
+  --shadow-float: 0 10px 40px rgba(0, 0, 0, 0.1);
+  --shadow-button: 0 4px 12px rgba(51, 112, 255, 0.3);
+  
+  /* 圆角 */
+  --radius-s: 6px;
+  --radius-m: 10px;
+  --radius-l: 16px;
+
+  /* 动画 */
+  --transition-base: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); /* 更有弹性的过渡 */
 }
-.main h4 {
-  font-size: calc(1.275rem + 0.3vw);
+
+/* Dark Mode 适配 */
+.semi-always-dark,
+body[theme-mode='dark'] {
+  --gradient-primary: linear-gradient(135deg, #4571E1 0%, #2D9CDB 100%);
+  --gradient-bg: linear-gradient(180deg, #1A1A1A 0%, #141414 100%);
+  --bg-body: #141414;
+  --bg-color: #1F1F1F;
+  --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.3);
+  --shadow-card-hover: 0 8px 30px rgba(0, 0, 0, 0.5);
+  --color-n100: #2a2a2a;
 }
-.main code {
-  color: #d63384;
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  background: var(--bg-body);
+  color: var(--text-primary);
+  line-height: 1.6;
+}
+
+/* 动画定义 */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(51, 112, 255, 0.4); }
+  70% { box-shadow: 0 0 0 10px rgba(51, 112, 255, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(51, 112, 255, 0); }
+}
+
+/* 主容器 */
+.app-container {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 0 20px 40px 20px;
+  animation: fadeInUp 0.6s ease-out;
+}
+
+/* 标题区 */
+.app-header {
+  margin-bottom: 36px; /* 适中的头部间距 */
+  padding: 18px 20px;
+  background: var(--bg-color);
+  border-radius: var(--radius-l);
+  box-shadow: var(--shadow-card);
+  display: flex;
+  align-items: flex-start;
+  position: relative;
+  overflow: hidden;
+}
+
+/* 头部装饰背景 */
+.app-header::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -10%;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(51, 112, 255, 0.08) 0%, rgba(255, 255, 255, 0) 70%);
+  border-radius: 50%;
+  z-index: 0;
+}
+
+.header-icon-wrapper {
+  background: var(--gradient-primary);
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  margin-right: 16px;
+  box-shadow: 0 8px 16px rgba(51, 112, 255, 0.2);
+  flex-shrink: 0;
+  z-index: 1;
+}
+
+.header-content {
+  z-index: 1;
+}
+
+.app-header h4 {
+  margin: 0 0 8px 0;
+  font-weight: 700;
+  font-size: 20px;
+  color: var(--text-primary);
+  letter-spacing: -0.5px;
+}
+
+/* Semi 组件全局覆盖 - 酷炫风格 */
+.semi-card {
+  background-color: var(--bg-color) !important;
+  border: 1px solid transparent !important; /* 移除默认边框 */
+  border-radius: var(--radius-l) !important;
+  box-shadow: var(--shadow-card) !important;
+  margin-bottom: 48px; /* 增加步骤卡片间距，让布局更舒适 */
+  transition: var(--transition-base);
+  overflow: hidden;
+}
+
+.semi-card:hover {
+  transform: translateY(-2px) scale(1.002); /* 减小浮动和缩放效果，更克制 */
+  box-shadow: var(--shadow-card-hover) !important;
+}
+
+/* 步骤指示器 - 更有质感 */
+.step-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  background: var(--gradient-primary);
+  color: white;
+  margin-right: 12px;
+  font-size: 14px;
+  font-weight: 700;
+  box-shadow: 0 4px 8px rgba(51, 112, 255, 0.25);
+}
+
+.semi-card-header-wrapper {
+  padding: 20px 24px !important;
+  border-bottom: 1px solid rgba(0,0,0,0.03) !important;
+  background: linear-gradient(to right, rgba(249, 250, 251, 0.5), rgba(255, 255, 255, 0));
+}
+
+.semi-card-body {
+  padding: 24px !important;
+}
+
+/* 记录列表选择器 - 卡片化 */
+.record-list-selector {
+  border: 1px solid rgba(0,0,0,0.05);
+  border-radius: var(--radius-m);
+  background-color: #FAFBFC;
+  padding: 12px;
+  transition: all 0.3s;
+}
+
+.record-list-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  border-radius: var(--radius-m);
+  margin-bottom: 12px; /* 增加记录项之间的间距 */
+  background-color: var(--bg-color);
+  border: 1px solid transparent;
+  transition: var(--transition-base);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+}
+
+.record-list-item:hover {
+  background-color: var(--bg-color);
+  transform: translateX(2px); /* 更克制的水平移动效果 */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+  border-color: rgba(51, 112, 255, 0.3);
+}
+
+/* 选中项样式 - 重点突出 */
+.record-list-item:has(.semi-radio-checked) {
+  background: linear-gradient(90deg, #F0F5FF 0%, #FFFFFF 100%);
+  border-color: var(--primary-color);
+  box-shadow: 0 4px 12px rgba(51, 112, 255, 0.1);
+}
+
+.record-list-item:has(.semi-radio-checked) .semi-radio-inner {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(51, 112, 255, 0.2); /* 选中时光晕 */
+}
+
+/* 信息提示 Block - 更加现代 */
+.info-tip {
+  padding: 16px 20px;
+  background: linear-gradient(90deg, #F0F5FF 0%, #F8FAFF 100%);
+  border-radius: var(--radius-m);
+  border-left: none; /* 去掉左侧粗边框 */
+  position: relative;
+  overflow: hidden;
+}
+
+.info-tip::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: var(--gradient-primary);
+}
+
+/* 按钮 - 渐变 + 投影 */
+.action-buttons {
+  display: flex;
+  justify-content: flex-end;
+  padding: 24px;
+  margin-top: 42px; /* 适中的按钮区域间距 */
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px); /* 磨砂玻璃效果 */
+  border-radius: var(--radius-l);
+  position: sticky;
+  bottom: 24px;
+  box-shadow: var(--shadow-float);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.action-buttons button.semi-button-primary {
+  background: var(--gradient-primary) !important;
+  border: none !important;
+  height: 44px;
+  padding: 0 32px;
+  font-size: 16px;
+  font-weight: 600;
+  box-shadow: var(--shadow-button);
+  transition: var(--transition-base);
+}
+
+.action-buttons button.semi-button-primary:hover {
+  background: var(--gradient-hover) !important;
+  transform: translateY(-1px); /* 更克制的按钮浮动效果 */
+  box-shadow: 0 6px 16px rgba(51, 112, 255, 0.35);
+}
+
+.action-buttons button.semi-button-primary:active {
+  transform: translateY(0);
+}
+
+/* Empty State 优化 */
+.semi-empty {
+  padding: 48px 0;
+}
+
+/* 滚动条 */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #D0D3D9;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #A0A3A9;
+}
+
+/* 响应式 */
+@media (max-width: 768px) {
+  .app-container {
+    padding: 16px;
+    margin: 10px auto;
+  }
+  
+  .action-buttons {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 0;
+    border-radius: 0;
+    background: rgba(255, 255, 255, 0.95);
+  }
 }

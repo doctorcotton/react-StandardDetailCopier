@@ -1,8 +1,8 @@
 {
-  "name": "react-emplate",
+  "name": "base-material-copy-plugin",
   "version": "1.0.0",
   "type": "module",
-  "description": "React TypeScript on Replit, using Vite bundler",
+  "description": "飞书多维表格插件 - 原料标准明细一键复制",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",

@@ -1,3 +1,48 @@
 {
-  "title":"这是英文标题"
+  "app": {
+    "title": "Material Standard Detail Copy",
+    "description": "Quickly copy linked records through duplex link fields"
+  },
+  "step1": {
+    "title": "Step 1: Select Main Table",
+    "selectTable": "Select main table (e.g., Material Standard Management)",
+    "placeholder": "Please select main table"
+  },
+  "step2": {
+    "title": "Step 2: Select Source Record",
+    "selectRecord": "Select source record to copy linked records from",
+    "placeholder": "Please select source record",
+    "emptyTitle": "Please select main table first",
+    "emptyDescription": "Select main table before selecting records"
+  },
+  "step3": {
+    "title": "Step 3: Select Link Field",
+    "selectField": "Select duplex link field to copy",
+    "placeholder": "Please select link field",
+    "linkedCount": "Detected {count} linked records",
+    "emptyTitle": "Please select source record first",
+    "emptyDescription": "Select source record before selecting link field"
+  },
+  "step4": {
+    "title": "Step 4: Select Target Record",
+    "selectRecord": "Select target record to copy to",
+    "placeholder": "Please select target record",
+    "tip": "Will copy {count} records from {source}'s {field}, new records will link to target record",
+    "emptyTitle": "Please select link field first",
+    "emptyDescription": "Select link field before selecting target record"
+  },
+  "actions": {
+    "startCopy": "Start Copy",
+    "copying": "Copying..."
+  },
+  "messages": {
+    "selectMainTable": "Please select main table",
+    "selectSourceRecord": "Please select source record",
+    "selectLinkField": "Please select link field",
+    "selectTargetRecord": "Please select target record",
+    "noLinkedRecords": "Source record has no linked records to copy",
+    "copySuccess": "Successfully copied {count} linked records!",
+    "copyFailed": "Copy failed: {error}",
+    "loading": "Loading..."
+  }
 }
